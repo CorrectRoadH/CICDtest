@@ -20,4 +20,4 @@ jobs:
       - name: Build the Docker image
         run: docker build -t cicdtest .
       - name: Run a Docker
-        run: docker run -it --name ruoyi -p 8080:8080 cicdtest 
+        run: docker run --name testenv -p 8080:8080 cicdtest 
