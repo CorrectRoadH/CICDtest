@@ -23,10 +23,12 @@ jobs:
       - name: Run a Docker
         run: docker run --name testenv -p 8080:8080 cicdtest &
 
-      - name: Run a test
+      - name: install python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
+        
+      - name: install dep
         run: pip install requests
 
       - name: Run the request script
