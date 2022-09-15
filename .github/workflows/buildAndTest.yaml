@@ -21,7 +21,10 @@ jobs:
         run: docker build -t cicdtest .
       - name: Run a Docker
         run: docker run --name testenv -p 8080:8080 cicdtest &
-      - name: wait docker start
-        run: sleep 5
       - name: Run a test
-        run: sh tests/test_1.sh
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+        run: pip install requests
+      - name: Run the request script
+        run: python tests/request.test.py
