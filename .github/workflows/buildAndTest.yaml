@@ -19,12 +19,15 @@ jobs:
 
       - name: Build the Docker image
         run: docker build -t cicdtest .
+
       - name: Run a Docker
         run: docker run --name testenv -p 8080:8080 cicdtest &
+
       - name: Run a test
         uses: actions/setup-python@v2
         with:
           python-version: '3.9'
         run: pip install requests
+
       - name: Run the request script
         run: python tests/request.test.py
